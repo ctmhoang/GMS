@@ -4,11 +4,16 @@ abstract class BaseDao
 {
     private PDO $pdo;
 
+    /**
+     * BaseDao constructor.
+     * @param PDO $pdo
+     */
     public function __construct(PDO $pdo)
     {
-        if($pdo === null) die("PDO Object is not set");
+        if($pdo === null) die("Invalid PDO Argument");
         $this->pdo = $pdo;
     }
+
 
     protected final function query(string $sql): array
     {
