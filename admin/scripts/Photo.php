@@ -6,8 +6,7 @@ use JetBrains\PhpStorm\Pure;
 class Photo
 {
     private array $data;
-    private const TMP_PATH = '';
-    private const UPLOAD_DIR = 'imgs';
+    public const UPLOAD_DIR = 'imgs/';
 
     /**
      * Photo constructor.
@@ -20,6 +19,9 @@ class Photo
 
     public function __get(string $name)
     {
+        if (method_exists($this, $method = 'get' . ucfirst($name) . 'Property')) {
+            return $this->{$method}();
+        }
         return $this->data[$name] ?? null;
     }
 
@@ -33,6 +35,11 @@ class Photo
     #[Pure] public function __toString(): string
     {
         return implode("|", $this->data);
+    }
+
+    private function getDirProperty(): string
+    {
+        return self::UPLOAD_DIR .$this->name;
     }
 
 

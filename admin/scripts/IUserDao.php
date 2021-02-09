@@ -8,9 +8,9 @@ interface IUserDao
 
     public function validateUser(string $usr, string $pwd): ?array;
 
-    public function insert(User $user): int;
+    public function insert(array $data): int;
 
-    public function update(string $id, array $data): int;
+    public function update(int $id, array $data): int;
 
     public function delete(string $sql, int $id) : int;
 }

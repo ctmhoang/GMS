@@ -33,6 +33,11 @@ class UserService implements IUserService
         $tmp = $this->udao->validateUser($usr, $pwd);
         return $tmp === null ? null : new User($tmp);
     }
+
+    public function save(array $data, int $id = -1): int
+    {
+        return $id == -1 ? $this->udao->insert($data) : $this->udao->update($id,$data);
+    }
 }
 
 $user_dao = $user_dao ?? null;

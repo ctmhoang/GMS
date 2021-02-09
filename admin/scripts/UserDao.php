@@ -38,27 +38,22 @@ class UserDao extends BaseDao implements IUserDao
             ['usr' => $usr, 'pwd' => $pwd]);
     }
 
-    public function insert(User $user): int
+    public function insert(array $data): int
     {
         $this->execute("insert into USERS (usr, pwd, fst, lst) value (:usr,:pwd,:fst,:lst)",
-            [
-                'usr' => $user->usr,
-                'pwd' => $user->pwd,
-                'fst' => $user->fst,
-                'lst' => $user->lst
-            ]);
+            $data);
         return $this->lstInsertedId();
     }
 
 
-    public function update(string $id, array $data): int
+    public function update(int $id, array $data): int
     {
         return $this->execute('update USERS set usr = :usr, pwd = :pwd, fst = :fst, lst = :lst where id = :id', $data);
     }
 
     public function delete(string $sql, int $id): int
     {
-        return $this->execute('delete from USERS where id = :id',['id' => $id]);
+        return $this->execute('delete from USERS where id = :id', ['id' => $id]);
     }
 }
 

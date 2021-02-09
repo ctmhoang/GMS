@@ -25,3 +25,5 @@
   * `size`
   * `tmp_name`
   * `error`
+  
+* `foreach :` and `endforeach`
