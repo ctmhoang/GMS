@@ -15,7 +15,7 @@ abstract class BaseDao
     }
 
 
-    protected final function query(string $sql): array
+    protected final function fetch(string $sql): array
     {
         $res = [];
         $stm = $this->pdo->query($sql);
@@ -26,17 +26,25 @@ abstract class BaseDao
         return $res;
     }
 
-    protected final function execute(string $sql, array $args, bool $isScalar = false): ?array
+    protected final function query(string $sql, array $args): array
     {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($args);
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($res === false || !$isScalar) return null;
+        if ($res === false ) return [];
         return $res;
+    }
+
+    protected final function execute(string $sql, array $args) : int
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($args);
+        return $stmt->rowCount();
     }
 
     protected final function lstInsertedId(string $name = null): string
     {
         return $this->pdo->lastInsertId($name);
     }
+
 }

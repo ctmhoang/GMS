@@ -1,6 +1,12 @@
 <?php
 
 
+use JetBrains\PhpStorm\Pure;
+
+/**
+ * @property string fst
+ * @property string lst
+ */
 class User
 {
     private array $data;
@@ -37,7 +43,7 @@ class User
         return isset($this->data[$name]);
     }
 
-    public function __toString() : string
+    #[Pure] public function __toString() : string
     {
         return implode("|", $this->data);
     }

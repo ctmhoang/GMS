@@ -12,7 +12,16 @@
    * `file_exists`
    * `is_file|dir`
    * `class_exists`
+   * `move_uploaded_file(tmpFile,dir)` return bool
+   * `basename()`
 * Magic constants
   * `__FILE__`
   * `__LINE__`
   * `__DIR__`
+    
+* Super Global `$_FILE`
+  * `name`
+  * `type`
+  * `size`
+  * `tmp_name`
+  * `error`
