@@ -32,10 +32,10 @@ class UserDao extends BaseDao implements IUserDao
      * @param string $pwd
      * @return array or false
      */
-    public function validateUser(string $usr, string $pwd) : ?array
+    public function validateUser(string $usr, string $pwd): ?array
     {
-        return $this->execute("select * from USERS where usr = :usr and pwd = :pwd limit 1", true,
-            ['usr' => $usr, 'pwd' => $pwd]);
+        return $this->execute("select * from USERS where usr = :usr and pwd = :pwd limit 1",
+            ['usr' => $usr, 'pwd' => $pwd], true);
     }
 }
 

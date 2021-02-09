@@ -26,12 +26,12 @@ abstract class BaseDao
         return $res;
     }
 
-    protected final function execute(string $sql, bool $isScalar = false, string ...$args) : ?array
+    protected final function execute(string $sql, array $args, bool $isScalar = false): ?array
     {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($args);
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($res === false || !$isScalar) return null;
+        if ($res === false || !$isScalar) return null;
         return $res;
     }
 

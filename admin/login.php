@@ -1,26 +1,33 @@
 <?php
 /** @noinspection PhpIncludeInspection */
 require_once 'includes/Session.php';
+require_once 'includes/header.php';
 require_once 'scripts/UserService.php';
 
 $session = $session ?? null;
 $user_service = $user_service ?? null;
 
-$message = $usr = $pwd = '';
-if ($session->isSignedIn()) {
+$usr = $pwd = '';
+$message = $session->getMessage();
+
+if ($session->isSignedIn())
     header('Location: index.php');
-}
-if (isset($_POST['submit'])) {
+
+if (isset($_POST['usr'], $_POST['pwd'])) {
+
     $usr = trim($_POST['usr']);
     $pwd = $_POST['pwd'];
-    $user = $user_service->GetInfo($usr,$pwd);
+    $user = $user_service->GetInfo($usr, $pwd);
+    echo $user;
     if ($user) {
         $session->login($user);
         header("Location: index.php");
     } else {
-        $message = 'Username and Password are incorrect';
+        $session->setMessage('Username or Password are incorrect');
+        header('Location: index.php');
     }
-} ?>
+}
+?>
 
 <div class="col-md-4 col-md-offset-3">
 
@@ -29,25 +36,24 @@ if (isset($_POST['submit'])) {
     <form id="login-id" action="" method="post">
 
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" value="<?= htmlentities($usr); ?>">
+            <label for="usr" style="color: white">Username</label>
+            <input type="text" class="form-control" name="usr" value="<?= htmlentities($usr); ?>">
 
         </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" value="<?= htmlentities($pwd); ?>">
+        <div class="form-group" style="color: white">
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" name="pwd" value="<?= htmlentities($pwd); ?>">
 
         </div>
 
 
         <div class="form-group">
-            <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+            <button class="btn btn-primary">Submit</button>
 
         </div>
 
 
     </form>
-
 
 </div>

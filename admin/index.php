@@ -1,7 +1,13 @@
 <?php
 /** @noinspection PhpIncludeInspection */
 include("includes/header.php");
+require_once 'includes/Session.php';
+$session = $session ?? null;
+if (!$session->isSignedIn()) {
+    header('Location: login.php');
+}
 ?>
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

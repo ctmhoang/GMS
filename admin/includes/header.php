@@ -1,10 +1,3 @@
-<?php
-require_once 'Session.php';
-$session = $session ?? null;
-if (!$session->isSignedIn()) {
-    header('Location: login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -37,5 +37,10 @@ class User
         return isset($this->data[$name]);
     }
 
+    public function __toString() : string
+    {
+        return implode("|", $this->data);
+    }
+
 
 }

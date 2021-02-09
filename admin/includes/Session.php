@@ -39,12 +39,32 @@ class Session
         }
     }
 
-    public function logout(User $user)
+    public function logout()
     {
         session_destroy();
         unset($this->uid);
         $this->isSignedIn = false;
     }
+
+    /**
+     * @return string
+     */
+    public function getMessage(): string
+    {
+        $flash = isset($_SESSION['message']) ? $_SESSION['message'] : '';
+        unset($_SESSION['message']);
+        return $flash;
+    }
+
+    /**
+     * @param string $message
+     */
+    public function setMessage(string $message): void
+    {
+        $_SESSION['message'] = $message;
+    }
+
+
 
 }
 
