@@ -4,9 +4,9 @@ interface IPhotoDao{
 
     public function findById(int $id): ?array;
 
-    public function insert(Photo $photo): int;
+    public function insert(array $data): int;
 
     public function update(int $id, array $data): int;
 
-    public function delete(string $sql, int $id) : int;
+    public function delete(int $id) : int;
 }

@@ -41,10 +41,16 @@ class PhotoService implements IPhotoService
             if (empty($filename) || empty($tmpPath) || file_exists($targetPath)) return -1;
 
             if (move_uploaded_file($tmpPath, $targetPath))
-                return $this->pdao->insert(new Photo($data));
+                return $this->pdao->insert($data);
 
             return -1;
         }
+    }
+
+    public function del(Photo $photo): bool
+    {
+        $this->pdao->delete()
+        return false;
     }
 }
 

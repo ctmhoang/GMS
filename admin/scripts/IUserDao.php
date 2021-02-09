@@ -12,5 +12,5 @@ interface IUserDao
 
     public function update(int $id, array $data): int;
 
-    public function delete(string $sql, int $id) : int;
+    public function delete(int $id) : int;
 }

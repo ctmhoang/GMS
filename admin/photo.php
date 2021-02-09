@@ -9,6 +9,7 @@ if (!$session->isSignedIn()) {
 }
 $photo_service = $photo_service ?? null;
 
+$message = $session->getMessage();
 
 $photos = $photo_service->fetchAll();
 
@@ -44,6 +45,9 @@ $photos = $photo_service->fetchAll();
                         Photos
                         <small></small>
                     </h1>
+
+                    <p class="bg-success"> <?= $message ?></p>
+
 
                     <div class="col-md-12">
 
@@ -81,22 +85,23 @@ $photos = $photo_service->fetchAll();
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>
                                     <td>
-<!---->
-<!--                                        <a href="comment_photo.php?id=--><?php //echo $photo->id; ?><!--">-->
-<!---->
-<!--                                            --><?php
-//
-//                                            $comments = Comment::find_the_comments($photo->id);
-//
-//
-//                                            echo count($comments);
-//
-//
-//                                            ?>
-<!---->
-<!--                                        </a>-->
-<!---->
-<!---->
+                                        <!---->
+                                        <!--                                        <a href="comment_photo.php?id=-->
+                                        <?php //echo $photo->id; ?><!--">-->
+                                        <!---->
+                                        <!--                                            --><?php
+                                        //
+                                        //                                            $comments = Comment::find_the_comments($photo->id);
+                                        //
+                                        //
+                                        //                                            echo count($comments);
+                                        //
+                                        //
+                                        //                                            ?>
+                                        <!---->
+                                        <!--                                        </a>-->
+                                        <!---->
+                                        <!---->
                                     </td>
 
                                 </tr>
