@@ -10,7 +10,7 @@ abstract class BaseDao
      */
     public function __construct(PDO $pdo)
     {
-        if($pdo === null) die("Invalid PDO Argument");
+        if ($pdo === null) die("Invalid PDO Argument");
         $this->pdo = $pdo;
     }
 
@@ -23,6 +23,15 @@ abstract class BaseDao
             while ($row = $stm->fetch(PDO::FETCH_ASSOC))
                 $res[] = $row;
 
+        return $res;
+    }
+
+    protected final function execute(string $sql, bool $isScalar = false, string ...$args) : ?array
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($args);
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($res === false || !$isScalar) return null;
         return $res;
     }
 

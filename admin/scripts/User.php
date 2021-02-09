@@ -3,7 +3,7 @@
 
 class User
 {
-   private array $data;
+    private array $data;
 
     /**
      * User constructor.
@@ -18,14 +18,24 @@ class User
     public function __get($name)
     {
         if (method_exists($this, $method = 'get' . ucfirst($name) . 'Property')) {
-            return $this->$method();
+            return $this->{$method}();
         }
-        return $this->data[$name ] ?? null;
+        return $this->data[$name] ?? null;
     }
 
-    private function getFullNameProperty() : string
+    private function getFullNameProperty(): string
     {
-        return "$this->fstName $this->lstName";
+        return "$this->fst $this->lst";
     }
+
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function __isset(string $name) : bool
+    {
+        return isset($this->data[$name]);
+    }
+
 
 }

@@ -1,7 +1,6 @@
 <?php
 /** @noinspection PhpIncludeInspection */
 include("includes/header.php");
-require_once("scripts/UserDao.php")
 ?>
 
     <!-- Navigation -->
@@ -32,10 +31,6 @@ require_once("scripts/UserDao.php")
                         </li>
                     </ol>
                 </div>
-                <?php
-                $user_dao = $user_dao ?? null;
-                print_r($user_dao->findById(1));
-                ?>
 
             </div>
             <!-- /.row -->

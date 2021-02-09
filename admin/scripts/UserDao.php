@@ -21,8 +21,21 @@ class UserDao extends BaseDao implements IUserDao
         return $this->query("select * from USERS");
     }
 
-    public function findById(int $id) :User{
-        return new User($this->query("select * from USERS where id = $id"));
+    public function findById(int $id): ?array
+    {
+        if ($id <= 0) return null;
+        return $this->query("select * from USERS where id = $id LIMIT 1");
+    }
+
+    /**
+     * @param string $usr
+     * @param string $pwd
+     * @return array or false
+     */
+    public function validateUser(string $usr, string $pwd) : ?array
+    {
+        return $this->execute("select * from USERS where usr = :usr and pwd = :pwd limit 1", true,
+            ['usr' => $usr, 'pwd' => $pwd]);
     }
 }
 
