@@ -10,5 +10,9 @@
  
 * File
    * `file_exists`
-   * `is_file`
+   * `is_file|dir`
    * `class_exists`
+* Magic constants
+  * `__FILE__`
+  * `__LINE__`
+  * `__DIR__`
