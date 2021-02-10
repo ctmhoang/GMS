@@ -48,6 +48,7 @@ class UserDao extends BaseDao implements IUserDao
 
     public function update(int $id, array $data): int
     {
+        $data['id'] = $id;
         return $this->execute('update USERS set usr = :usr, pwd = :pwd, fst = :fst, lst = :lst where id = :id', $data);
     }
 

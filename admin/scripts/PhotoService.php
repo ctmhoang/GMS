@@ -31,7 +31,14 @@ class PhotoService implements IPhotoService
 
     public function save(array $data, int $id = -1): int
     {
-        if ($id != -1) return $this->pdao->update($id, $data);
+        if ($id != -1) return $this->pdao->update($id,
+            ['title' => $data['title'],
+                'desc' => $data['description'],
+                'name' => $data['name'],
+                'type' => $data['type'],
+                'size' => $data['size'],
+                'altertext' => $data['altertext'],
+                'caption' => $data['caption']]);
         else {
             $filename = basename($data['name']);
             $tmpPath = $data['tmp_name'];
@@ -44,6 +51,8 @@ class PhotoService implements IPhotoService
                 return $this->pdao->insert([
                     'title' => $data['title'] ?? null,
                     'desc' => null,
+                    'altertext' => null,
+                    'caption' => null,
                     'name' => $data['name'],
                     'type' => $data['type'],
                     'size' => $data['size']
@@ -56,7 +65,7 @@ class PhotoService implements IPhotoService
     public function del(Photo $photo): bool
     {
         // TODO :Change to dyna link
-        if (unlink('/opt/lampp/htdocs/GMS/admin/imgs/'.$photo->name)) return $this->pdao->delete($photo->id) == 1;
+        if (unlink('/opt/lampp/htdocs/GMS/admin/imgs/' . $photo->name)) return $this->pdao->delete($photo->id) == 1;
         return false;
     }
 }

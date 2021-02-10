@@ -7,6 +7,7 @@ use JetBrains\PhpStorm\Pure;
  * @property string path
  * @property int id
  * @property mixed|null name
+ * @property mixed|null rawData
  */
 class Photo
 {
@@ -45,6 +46,16 @@ class Photo
     private function getDirProperty(): string
     {
         return self::UPLOAD_DIR .$this->name;
+    }
+
+    private function getRawDataProperty(): array
+    {
+        return $this->data;
+    }
+
+    public function __set(string $name, $value): void
+    {
+        $this->data[$name] = $value;
     }
 
 

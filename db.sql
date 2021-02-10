@@ -11,9 +11,12 @@ CREATE TABLE USERS (
 
 CREATE TABLE PHOTOS (
     id int PRIMARY KEY AUTO_INCREMENT,
+    altertext varchar(255),
     title varchar(255),
+    caption varchar(255),
     description text,
     name varchar(255),
     type varchar(255),
     size int(11)
 );
+

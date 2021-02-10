@@ -36,12 +36,12 @@ if (isset($_POST['usr'], $_POST['pwd'])) {
     <form id="login-id" action="" method="post">
 
         <div class="form-group">
-            <label for="usr" style="color: white">Username</label>
+            <label for="usr">Username</label>
             <input type="text" class="form-control" name="usr" value="<?= htmlentities($usr); ?>">
 
         </div>
 
-        <div class="form-group" style="color: white">
+        <div class="form-group">
             <label for="pwd">Password</label>
             <input type="password" class="form-control" name="pwd" value="<?= htmlentities($pwd); ?>">
 
