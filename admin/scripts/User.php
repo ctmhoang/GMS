@@ -6,6 +6,7 @@ use JetBrains\PhpStorm\Pure;
 /**
  * @property string fst
  * @property string lst
+ * @property mixed|null id
  */
 class User
 {

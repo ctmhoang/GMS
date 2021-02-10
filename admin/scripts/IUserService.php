@@ -10,4 +10,6 @@ interface IUserService
     public function GetInfo(string $usr, string $pwd) : ?User;
 
     public function save(array $data, int $id = -1) : int;
+
+    public function del(User $user) :bool;
 }

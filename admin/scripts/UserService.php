@@ -38,6 +38,11 @@ class UserService implements IUserService
     {
         return $id == -1 ? $this->udao->insert($data) : $this->udao->update($id,$data);
     }
+
+    public function del(User $user): bool
+    {
+        return $this->udao->delete($user->id) == 1;
+    }
 }
 
 $user_dao = $user_dao ?? null;
