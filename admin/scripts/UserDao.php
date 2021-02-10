@@ -24,7 +24,7 @@ class UserDao extends BaseDao implements IUserDao
     public function findById(int $id): ?array
     {
         if ($id <= 0) return null;
-        return $this->fetch("select * from USERS where id = $id LIMIT 1");
+        return $this->fetch("select * from USERS where id = $id LIMIT 1")[0];
     }
 
     /**

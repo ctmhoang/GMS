@@ -16,8 +16,6 @@ if (isset($_FILES['file'])) {
 
     $data = $_FILES['file'];
     $data['title'] = $_POST['title'];
-    $data['desc'] = null;
-
     $message = '';
 
     if ($photo_service->save($data) != -1) {
@@ -25,8 +23,7 @@ if (isset($_FILES['file'])) {
     } else {
         $message = "Errors occurred";
     }
-    $session->setMessage($message);
-}
+    $session->setMessage($message);}
 
 ?>
 

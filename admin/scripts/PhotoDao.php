@@ -24,7 +24,7 @@ class PhotoDao extends BaseDao implements IPhotoDao
     public function findById(int $id): ?array
     {
         if ($id <= 0) return null;
-        return $this->fetch("select * from PHOTOS where id = $id LIMIT 1");
+        return $this->fetch("select * from PHOTOS where id = $id LIMIT 1")[0];
     }
 
     public function insert(array $data): int

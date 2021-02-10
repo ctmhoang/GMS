@@ -14,6 +14,7 @@
    * `class_exists`
    * `move_uploaded_file(tmpFile,dir)` return bool
    * `basename()`
+   * `unlink($path)`
 * Magic constants
   * `__FILE__`
   * `__LINE__`

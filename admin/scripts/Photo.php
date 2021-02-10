@@ -3,6 +3,11 @@
 
 use JetBrains\PhpStorm\Pure;
 
+/**
+ * @property string path
+ * @property int id
+ * @property mixed|null name
+ */
 class Photo
 {
     private array $data;

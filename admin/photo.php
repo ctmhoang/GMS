@@ -85,6 +85,7 @@ $photos = $photo_service->fetchAll();
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>
                                     <td>
+                                        <?= $photo->path?>
                                         <!---->
                                         <!--                                        <a href="comment_photo.php?id=-->
                                         <?php //echo $photo->id; ?><!--">-->
