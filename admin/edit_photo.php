@@ -120,21 +120,14 @@ if (!isset($_GET['id'])) {
                                 </div>
                                 <div class="inside">
                                     <div class="box-inner">
-                                        <p class="text">
-                                            <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22,
-                                            2030 @ 5:26
-                                        </p>
                                         <p class="text ">
-                                            Photo Id: <span class="data photo_id_box">34</span>
+                                            Photo Id: <span class="data photo_id_box"><?=$photo->id?></span>
                                         </p>
                                         <p class="text">
-                                            Filename: <span class="data">image.jpg</span>
+                                            Filename: <span class="data"><?=$photo->name?>></span>
                                         </p>
                                         <p class="text">
-                                            File Type: <span class="data">JPG</span>
-                                        </p>
-                                        <p class="text">
-                                            File Size: <span class="data">3245345</span>
+                                            File Size: <span class="data"><?=$photo->size?>></span>
                                         </p>
                                     </div>
                                     <div class="info-box-footer clearfix">

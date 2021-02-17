@@ -20,3 +20,10 @@ CREATE TABLE PHOTOS (
     size int(11)
 );
 
+create table COMMENT(
+    id int primary key auto_increment,
+    pid int,
+    index (pid),
+    author varchar(256),
+    body text
+);

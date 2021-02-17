@@ -64,8 +64,7 @@ class PhotoService implements IPhotoService
 
     public function del(Photo $photo): bool
     {
-        // TODO :Change to dyna link
-        if (unlink('/opt/lampp/htdocs/GMS/admin/imgs/' . $photo->name)) return $this->pdao->delete($photo->id) == 1;
+        if (unlink($photo->dir)) return $this->pdao->delete($photo->id) == 1;
         return false;
     }
 }

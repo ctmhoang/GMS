@@ -5,14 +5,13 @@ use JetBrains\PhpStorm\Pure;
 
 /**
  * @property int id
- * @property mixed|null name
- * @property mixed|null rawData
- * @property string dir
+ * @property mixed|null pid
+ * @property mixed|null author
+ * @property string|null body
  */
-class Photo
+class Comment
 {
     private array $data;
-    public const UPLOAD_DIR = 'imgs/';
 
     /**
      * Photo constructor.
@@ -25,9 +24,6 @@ class Photo
 
     public function __get(string $name)
     {
-        if (method_exists($this, $method = 'get' . ucfirst($name) . 'Property')) {
-            return $this->{$method}();
-        }
         return $this->data[$name] ?? null;
     }
 
@@ -43,15 +39,6 @@ class Photo
         return implode("|", $this->data);
     }
 
-    private function getDirProperty(): string
-    {
-        return self::UPLOAD_DIR .$this->name;
-    }
-
-    private function getRawDataProperty(): array
-    {
-        return $this->data;
-    }
 
     public function __set(string $name, $value): void
     {
