@@ -8,6 +8,9 @@ use JetBrains\PhpStorm\Pure;
  * @property mixed|null name
  * @property mixed|null rawData
  * @property string dir
+ * @property mixed|null title
+ * @property mixed|null caption
+ * @property mixed|null description
  */
 class Photo
 {

@@ -124,10 +124,10 @@ if (!isset($_GET['id'])) {
                                             Photo Id: <span class="data photo_id_box"><?=$photo->id?></span>
                                         </p>
                                         <p class="text">
-                                            Filename: <span class="data"><?=$photo->name?>></span>
+                                            Filename: <span class="data"><?=$photo->name?></span>
                                         </p>
                                         <p class="text">
-                                            File Size: <span class="data"><?=$photo->size?>></span>
+                                            File Size: <span class="data"><?=$photo->size?></span>
                                         </p>
                                     </div>
                                     <div class="info-box-footer clearfix">

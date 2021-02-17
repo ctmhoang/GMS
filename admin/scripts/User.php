@@ -7,6 +7,8 @@ use JetBrains\PhpStorm\Pure;
  * @property string fst
  * @property string lst
  * @property mixed|null id
+ * @property mixed|null usr
+ * @property mixed|null pwd
  */
 class User
 {

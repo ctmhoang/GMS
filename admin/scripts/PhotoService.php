@@ -2,20 +2,24 @@
 require_once 'PhotoDao.php';
 require_once 'Photo.php';
 require_once 'IPhotoService.php';
+require_once 'CommentService.php';
+
 
 class PhotoService implements IPhotoService
 {
 
     private IPhotoDao $pdao;
+    private ICommentService $cserv;
 
     /**
      * PhotoService constructor.
      * @param IPhotoDao $pdao
      */
-    public function __construct(IPhotoDao $pdao)
+    public function __construct(IPhotoDao $pdao, ICommentService $commentService)
     {
-        if ($pdao === null) die("Invalid Argument in " . get_class($this));
+        if ($pdao === null || $commentService === null) die("Invalid Argument in " . get_class($this));
         $this->pdao = $pdao;
+        $this->cserv = $commentService;
     }
 
 
@@ -64,10 +68,10 @@ class PhotoService implements IPhotoService
 
     public function del(Photo $photo): bool
     {
+        $this->cserv->deleteRange($photo->id); #delete all comments
         if (unlink($photo->dir)) return $this->pdao->delete($photo->id) == 1;
         return false;
     }
 }
 
-$photo_dao = $photo_dao ?? null;
-$photo_service = new PhotoService($photo_dao);
+$photo_service = new PhotoService($photo_dao ?? null, $comment_service ?? null);

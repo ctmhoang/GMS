@@ -9,7 +9,8 @@ if (empty($_GET['id']))
     header("Location: index.php");
 
 $comment_service = $comment_service ?? null;
-$comment = $comment_service->fetchAllByPid($_GET['id']);
+$photo_service = $photo_service ?? null;
+$photo = $photo_service->findById($_GET['id']);
 
 if (isset($_POST['submit'])) {
 
@@ -19,15 +20,15 @@ if (isset($_POST['submit'])) {
 
     $new_comment = new Comment(['pid' => $_GET['id'], 'author' => $author, 'body' => $body]);
 
-    if ($comment_service ->save($new_comment)) {
+    if ($comment_service->insert($new_comment)) {
 
-        header("Location: photo.php?id=$_GET[id]");
+        header("Location: photo.php?id=$photo->id");
 
 
     } else {
 
 
-        $message = "There was some problems saving";
+        $message = "There was some problems in saving";
 
 
     }
@@ -41,7 +42,7 @@ if (isset($_POST['submit'])) {
 }
 
 
-$comments = $comment_service->fetchAllByPid( $_GET['id']);
+$comments = $comment_service->fetchAllByPid($_GET['id']);
 
 
 ?>
@@ -67,7 +68,7 @@ $comments = $comment_service->fetchAllByPid( $_GET['id']);
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-responsive" src="admin/<?php echo $photo->picture_path(); ?>" alt="">
+        <img class="img-responsive" src="admin/<?php echo $photo->dir; ?>" alt="">
 
         <hr>
 
@@ -87,6 +88,7 @@ $comments = $comment_service->fetchAllByPid( $_GET['id']);
             <form role="form" method="post">
                 <div class="form-group">
                     <label for="author">Author</label>
+
                     <input type="text" name="author" class="form-control">
                 </div>
                 <div class="form-group">
