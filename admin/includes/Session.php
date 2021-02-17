@@ -5,14 +5,16 @@ class Session
 
     private bool $isSignedIn = false;
     public string $uid;
+    private static int $count;
 
     public function __construct()
     {
         session_start();
         $this->checkSession();
+        self::countVisitor();
     }
 
-    public function checkSession()
+    public function checkSession(): void
     {
         if (isset($_SESSION['uid'])) {
             $this->uid = $_SESSION['uid'];
@@ -23,6 +25,15 @@ class Session
         }
     }
 
+    public static function countVisitor(): void
+    {
+        if (isset($_SESSION['count'])) {
+            self::$count = $_SESSION['count']++;
+            return;
+        }
+        $_SESSION['count'] = 1;
+    }
+
     /**
      * @return bool
      */
@@ -31,7 +42,7 @@ class Session
         return $this->isSignedIn;
     }
 
-    public function login(User $user)
+    public function login(User $user): void
     {
         if ($user) {
             $this->uid = $_SESSION['uid'] = (string)$user->id;
@@ -39,7 +50,7 @@ class Session
         }
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_destroy();
         unset($this->uid);
@@ -62,6 +73,14 @@ class Session
     public function setMessage(string $message): void
     {
         $_SESSION['message'] = $message;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getCount(): int
+    {
+        return self::$count;
     }
 
 

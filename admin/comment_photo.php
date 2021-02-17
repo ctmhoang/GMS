@@ -46,7 +46,7 @@ $comments = $comment_service->fetchAllByPid($_GET['id']);
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Users
+                        Comments
 
                     </h1>
 
