@@ -33,10 +33,6 @@ class CommentDao extends BaseDao implements ICommentDao
         return $this->execute('delete from COMMENT where pid = :id', ['id' => $pid]);
     }
 
-    public function isExisted(int $id): bool
-    {
-        return  count($this->fetch("select * from COMMENT where id = $id")) == 1;
-    }
 
     public function deleteById(int $id): int
     {
@@ -46,6 +42,11 @@ class CommentDao extends BaseDao implements ICommentDao
     public function fetchAll(): array
     {
         return $this->fetch("select * from COMMENT");
+    }
+
+    public function get(int $id): array
+    {
+        return $this->fetch("select * from COMMENT where id = $id");
     }
 }
 

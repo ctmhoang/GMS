@@ -35,7 +35,7 @@ class CommentService implements ICommentService
 
     public function isCommentWithIdExisted(int $id): bool
     {
-        return $this->cdao->isExisted($id);
+        return count($data = $this->cdao->get($id)) == 1 && !empty($data[0]);
     }
 
     public function deleteById(int $id): bool
@@ -46,6 +46,13 @@ class CommentService implements ICommentService
     public function fetchAll(): array
     {
         return array_map(fn(array $entry): Comment => new Comment($entry), $this->cdao->fetchAll());
+    }
+
+    public function get(int $id): ?Comment
+    {
+        if ($this->isCommentWithIdExisted($id))
+            return new Comment($this->cdao->get($id)[0]);
+        return null;
     }
 }
 

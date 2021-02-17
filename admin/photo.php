@@ -2,12 +2,14 @@
 require_once 'includes/Session.php';
 require_once('scripts/Photo.php');
 require_once('scripts/PhotoService.php');
+require_once 'scripts/CommentService.php';
 
 $session = $session ?? null;
 if (!$session->isSignedIn()) {
     header('Location: login.php');
 }
 $photo_service = $photo_service ?? null;
+$comment_service = $comment_service ?? null;
 
 $message = $session->getMessage();
 
@@ -85,24 +87,8 @@ $photos = $photo_service->fetchAll();
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>
                                     <td>
-                                        <?= $photo->path?>
-                                        <!---->
-                                        <!--                                        <a href="comment_photo.php?id=-->
-                                        <?php //echo $photo->id; ?><!--">-->
-                                        <!---->
-                                        <!--                                            --><?php
-                                        //
-                                        //                                            $comments = Comment::find_the_comments($photo->id);
-                                        //
-                                        //
-                                        //                                            echo count($comments);
-                                        //
-                                        //
-                                        //                                            ?>
-                                        <!---->
-                                        <!--                                        </a>-->
-                                        <!---->
-                                        <!---->
+                                        <?= $photo->path ?>
+                                        <a href="comment_photo.php?id=<?= $photo->id ?>"> <?= count($comments = $comment_service->fetchAllByPid($photo->id)) ?> </a>
                                     </td>
 
                                 </tr>

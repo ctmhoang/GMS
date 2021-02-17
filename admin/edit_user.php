@@ -6,6 +6,8 @@ require_once 'scripts/UserService.php';
 $session = $session ?? null;
 $user_service = $user_service ?? null;
 
+if (!$session->isSignedIn()) header("Location: login.php");
+
 $message = $session->getMessage();
 
 

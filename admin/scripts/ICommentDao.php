@@ -10,7 +10,7 @@ interface ICommentDao
 
     public function deleteByPid(int $pid): int;
 
-    public function isExisted(int $id): bool;
+    public function get(int $id): ?array;
 
     public function deleteById(int $id): int;
 

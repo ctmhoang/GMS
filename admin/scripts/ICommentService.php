@@ -14,4 +14,6 @@ interface  ICommentService
     public function isCommentWithIdExisted(int $id):bool;
 
     public function deleteById(int $id):bool;
+
+    public function get(int $id) : ?Comment;
 }

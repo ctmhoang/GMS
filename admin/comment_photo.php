@@ -1,16 +1,23 @@
 <?php /** @noinspection PhpIncludeInspection */
-require_once 'includes/Session.php';
-require_once 'includes/header.php';
-require_once 'scripts/UserService.php';
+include("includes/header.php");
+require_once('includes/Session.php');
+require_once('scripts/CommentService.php');
 
 $session = $session ?? null;
-$user_service = $user_service ?? null;
+$comment_service = $comment_service ?? null;
 
 if (!$session->isSignedIn()) header("Location: login.php");
 
+if (empty($_GET['id'])) {
 
+    header("Location: photo.php");
+
+}
 $message = $session->getMessage();
-$users = array_filter($user_service->fetchAll(), fn($v) => $v->id != $session->uid);
+
+$comments = $comment_service->fetchAllByPid($_GET['id']);
+
+
 ?>
 
     <!-- Navigation -->
@@ -38,17 +45,12 @@ $users = array_filter($user_service->fetchAll(), fn($v) => $v->id != $session->u
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-
-
                     <h1 class="page-header">
                         Users
 
                     </h1>
-                    <p class="bg-success">
-                        <?php echo $message; ?>
-                    </p>
 
-                    <a href="add_user.php" class="btn btn-primary">Add User</a>
+                    <p class="bg-success"> <?php echo $message; ?></p>
 
 
                     <div class="col-md-12">
@@ -57,32 +59,31 @@ $users = array_filter($user_service->fetchAll(), fn($v) => $v->id != $session->u
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Username</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Author</th>
+                                <th>Body</th>
+
                             </tr>
                             </thead>
                             <tbody>
 
-                            <?php foreach ($users as $user): ?>
+                            <?php foreach ($comments as $comment): ?>
 
                                 <tr>
 
-                                    <td><?php echo $user->id?> </td>
+                                    <td><?php echo $comment->id; ?> </td>
 
-                                    <td><?php echo $user->usr; ?>
+                                    <td><?php echo $comment->author; ?>
                                         <div class="action_links">
 
-                                            <a href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
-                                            <a href="edit_user.php?id=<?php echo $user->id; ?>">Edit</a>
+                                            <a href="del_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
 
 
                                         </div>
                                     </td>
 
 
-                                    <td><?php echo $user->fst; ?></td>
-                                    <td><?php echo $user->lst; ?></td>
+                                    <td><?php echo $comment->body; ?></td>
+
                                 </tr>
 
 
