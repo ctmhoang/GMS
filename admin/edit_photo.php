@@ -25,7 +25,6 @@ if (!isset($_GET['id'])) {
 
             $photo->title = $_POST['title'];
             $photo->caption = $_POST['caption'];
-            $photo->altertext = $_POST['altertext'];
             $photo->description = $_POST['desc'];
 
             print_r($photo);
@@ -92,13 +91,6 @@ if (!isset($_GET['id'])) {
                                 <label for="caption">Caption</label>
                                 <input type="text" name="caption" class="form-control"
                                        value="<?php echo $photo->caption; ?>">
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="caption">Alternate Text</label>
-                                <input type="text" name="altertext" class="form-control"
-                                       value="<?php echo $photo->altertext; ?>">
 
                             </div>
 

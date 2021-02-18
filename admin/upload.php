@@ -16,6 +16,7 @@ if (isset($_FILES['file'])) {
 
     $data = $_FILES['file'];
     $data['title'] = $_POST['title'];
+    $data['author'] = $session->getFullName();
     $message = '';
 
     if ($photo_service->save($data) != -1) {

@@ -10,7 +10,7 @@ if (!$session->isSignedIn()) header("Location: login.php");
 
 
 $message = $session->getMessage();
-$users = array_filter($user_service->fetchAll(), fn($v) => $v->id != $session->uid);
+$users = array_filter($user_service->fetchAll(), fn($v) => $v->id != $session->getUid());
 ?>
 
     <!-- Navigation -->

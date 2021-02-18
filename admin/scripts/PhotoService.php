@@ -42,7 +42,7 @@ class PhotoService implements IPhotoService
                 'name' => $data['name'],
                 'type' => $data['type'],
                 'size' => $data['size'],
-                'altertext' => $data['altertext'],
+                'author' => $data['author'],
                 'caption' => $data['caption']]);
         else {
             $filename = basename($data['name']);
@@ -56,7 +56,7 @@ class PhotoService implements IPhotoService
                 return $this->pdao->insert([
                     'title' => $data['title'] ?? null,
                     'desc' => null,
-                    'altertext' => null,
+                    'author' => $data['author'],
                     'caption' => null,
                     'name' => $data['name'],
                     'type' => $data['type'],

@@ -11,6 +11,7 @@ use JetBrains\PhpStorm\Pure;
  * @property mixed|null title
  * @property mixed|null caption
  * @property mixed|null description
+ * @property mixed|null author
  */
 class Photo
 {

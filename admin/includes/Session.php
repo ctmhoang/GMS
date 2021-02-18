@@ -4,8 +4,9 @@ class Session
 {
 
     private bool $isSignedIn = false;
-    public string $uid;
+    private string $uid;
     private static int $count;
+    private string $fullName;
 
     public function __construct()
     {
@@ -47,13 +48,14 @@ class Session
         if ($user) {
             $this->uid = $_SESSION['uid'] = (string)$user->id;
             $this->isSignedIn = true;
+            $this->fullName = $_SESSION['name'] = (string)$user->fullName;
         }
     }
 
     public function logout(): void
     {
         session_destroy();
-        unset($this->uid);
+        unset($this->uid, $this->fullName);
         $this->isSignedIn = false;
     }
 
@@ -66,6 +68,24 @@ class Session
         unset($_SESSION['message']);
         return $flash;
     }
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $_SESSION['name'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getUid(): string
+    {
+        return $this->uid;
+    }
+
+
 
     /**
      * @param string $message
@@ -82,7 +102,6 @@ class Session
     {
         return self::$count;
     }
-
 
 
 }

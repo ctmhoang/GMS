@@ -57,7 +57,7 @@ $comments = $comment_service->fetchAllByPid($_GET['id']);
 
         <!-- Author -->
         <p class="lead">
-            by <a href="#">Admin</a>
+            by <a href="#"><?=empty($name =$photo->author) ? 'Anonymous' : $name?></a>
         </p>
 
         <hr>

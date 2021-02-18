@@ -29,7 +29,7 @@ class PhotoDao extends BaseDao implements IPhotoDao
 
     public function insert(array $data): int
     {
-        $this->execute("insert into PHOTOS (title, description, name, type, size, altertext ,caption) value (:title,:desc,:name,:type,:size, :altertext, :caption)", $data);
+        $this->execute("insert into PHOTOS (title, description, name, type, size, author ,caption) value (:title,:desc,:name,:type,:size, :author, :caption)", $data);
         return $this->lstInsertedId();
     }
 
@@ -37,7 +37,7 @@ class PhotoDao extends BaseDao implements IPhotoDao
     public function update(int $id, array $data): int
     {
         $data['id'] = $id;
-        return $this->execute('update PHOTOS set title = :title, description = :desc, name = :name, type = :type, size = :size, altertext= :altertext, caption = :caption where id = :id', $data);
+        return $this->execute('update PHOTOS set title = :title, description = :desc, name = :name, type = :type, size = :size, author= :author, caption = :caption where id = :id', $data);
     }
 
     public function delete(int $id): int
