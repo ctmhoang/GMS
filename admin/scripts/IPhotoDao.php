@@ -9,4 +9,6 @@ interface IPhotoDao{
     public function update(int $id, array $data): int;
 
     public function delete(int $id) : int;
+
+    public function getRange(int $offset, int $perPage) : array;
 }

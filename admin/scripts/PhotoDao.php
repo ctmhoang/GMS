@@ -44,6 +44,11 @@ class PhotoDao extends BaseDao implements IPhotoDao
     {
         return $this->execute('delete from PHOTOS where id = :id', ['id' => $id]);
     }
+
+    public function getRange(int $offset, int $perPage): array
+    {
+        return $this->fetch("Select * from PHOTOS limit $perPage offset $offset");
+    }
 }
 
 $photo_dao = new PhotoDao($pdo ?? null);

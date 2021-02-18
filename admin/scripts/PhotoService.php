@@ -14,6 +14,7 @@ class PhotoService implements IPhotoService
     /**
      * PhotoService constructor.
      * @param IPhotoDao $pdao
+     * @param ICommentService $commentService
      */
     public function __construct(IPhotoDao $pdao, ICommentService $commentService)
     {
@@ -71,6 +72,11 @@ class PhotoService implements IPhotoService
         $this->cserv->deleteRange($photo->id); #delete all comments
         if (unlink($photo->dir)) return $this->pdao->delete($photo->id) == 1;
         return false;
+    }
+
+    public function getRange(int $offset, int $perPage): array
+    {
+        return array_map(fn(array $entry): Photo => new Photo($entry), $this->pdao->getRange($offset, $perPage));
     }
 }
 
