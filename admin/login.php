@@ -18,7 +18,6 @@ if (isset($_POST['usr'], $_POST['pwd'])) {
     $usr = trim($_POST['usr']);
     $pwd = $_POST['pwd'];
     $user = $user_service->GetInfo($usr, $pwd);
-    echo $user;
     if ($user) {
         $session->login($user);
         header("Location: index.php");

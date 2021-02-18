@@ -31,7 +31,7 @@ class UserService implements IUserService
     public function GetInfo(string $usr, string $pwd): ?User
     {
         $tmp = $this->udao->validateUser($usr, $pwd);
-        return $tmp === null ? null : new User($tmp);
+        return empty($tmp) ? null : new User($tmp);
     }
 
     public function save(array $data, int $id = -1): int
