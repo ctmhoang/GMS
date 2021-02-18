@@ -57,7 +57,7 @@ $comments = $comment_service->fetchAllByPid($_GET['id']);
 
         <!-- Author -->
         <p class="lead">
-            by <a href="#">Edwin Diaz</a>
+            by <a href="#">Admin</a>
         </p>
 
         <hr>
