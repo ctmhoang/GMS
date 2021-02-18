@@ -18,6 +18,8 @@ if (!$session->isSignedIn()) {
 }
 ?>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -155,7 +157,7 @@ if (!$session->isSignedIn()) {
                     </div> <!--First Row-->
 
 
-                    <div class="row">
+                    <div class="row" style="display: flex; justify-content: center">
 
 
                         <div id="piechart" style="width: 900px; height: 500px;"></div>
@@ -193,7 +195,7 @@ if (!$session->isSignedIn()) {
                 legend: 'none',
                 pieSliceText: 'none',
                 title: 'My Daily Activities',
-                backgrounColor: 'transparent'
+                backgroundColor: 'transparent'
 
             };
 
