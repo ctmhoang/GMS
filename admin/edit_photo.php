@@ -1,10 +1,8 @@
 <?php /** @noinspection PhpIncludeInspection */
 include("includes/header.php");
-require_once 'includes/Session.php';
 require_once('scripts/Photo.php');
 require_once('scripts/PhotoService.php');
 
-$session = $session ?? null;
 $photo_service = $photo_service ?? null;
 
 if (!$session->isSignedIn()) {

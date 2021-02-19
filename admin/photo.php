@@ -1,10 +1,8 @@
 <?php include("includes/header.php");
-require_once 'includes/Session.php';
 require_once('scripts/Photo.php');
 require_once('scripts/PhotoService.php');
 require_once 'scripts/CommentService.php';
 
-$session = $session ?? null;
 if (!$session->isSignedIn()) {
     header('Location: login.php');
 }

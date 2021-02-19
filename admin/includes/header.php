@@ -1,3 +1,12 @@
+<?php
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 2) . '/scripts/utils/config.php');
+
+require_once __ROOT__ . '/utils/Session.php';
+$session = $session ?? null;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

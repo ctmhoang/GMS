@@ -1,6 +1,5 @@
 <?php
 /** @noinspection PhpIncludeInspection */
-require_once 'includes/Session.php';
 require_once 'includes/header.php';
 require_once 'scripts/UserService.php';
 

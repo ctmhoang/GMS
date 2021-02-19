@@ -1,9 +1,7 @@
 <?php /** @noinspection PhpIncludeInspection */
 require 'includes/header.php';
-require_once 'includes/Session.php';
 require_once 'scripts/CommentService.php';
 
-$session = $session ?? null;
 $comment_service = $comment_service ?? null;
 
 $message = $session->getMessage();

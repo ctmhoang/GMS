@@ -1,9 +1,7 @@
 <?php /** @noinspection PhpIncludeInspection */
 include("includes/header.php");
-require_once('includes/Session.php');
 require_once('scripts/CommentService.php');
 
-$session = $session ?? null;
 $comment_service = $comment_service ?? null;
 
 if (!$session->isSignedIn()) header("Location: login.php");
