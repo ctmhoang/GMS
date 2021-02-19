@@ -1,8 +1,8 @@
 <?php
-require_once 'BaseDao.php';
-require_once 'ICommentDao.php';
-require_once "pdo.php";
-require_once 'Comment.php';
+require_once '../BaseDao.php';
+require_once '../ICommentDao.php';
+require_once "../pdo.php";
+require_once '../../bean/Comment.php';
 
 class CommentDao extends BaseDao implements ICommentDao
 {

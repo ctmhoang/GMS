@@ -1,8 +1,8 @@
 <?php
-require_once 'BaseDao.php';
-require_once 'IPhotoDao.php';
-require_once "pdo.php";
-require_once 'Photo.php';
+require_once 'admin/scripts/dal/BaseDao.php';
+require_once 'admin/scripts/dal/IPhotoDao.php';
+require_once "admin/scripts/dal/pdo.php";
+require_once 'admin/scripts/bean/Photo.php';
 
 class PhotoDao extends BaseDao implements IPhotoDao
 {

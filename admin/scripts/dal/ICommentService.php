@@ -1,5 +1,5 @@
 <?php
-require_once 'Comment.php';
+require_once '../bean/Comment.php';
 
 interface  ICommentService
 {

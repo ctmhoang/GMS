@@ -3,9 +3,9 @@
 include("includes/header.php");
 require_once 'includes/Session.php';
 
-require_once('scripts/PhotoService.php');
-require_once 'scripts/CommentService.php';
-require_once 'scripts/UserService.php';
+require_once('scripts/dal/impl/PhotoService.php');
+require_once 'scripts/dal/impl/CommentService.php';
+require_once 'scripts/dal/impl/UserService.php';
 
 $photo_service = $photo_service ?? null;
 $comment_service = $comment_service ?? null;

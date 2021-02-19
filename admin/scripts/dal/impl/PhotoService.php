@@ -1,8 +1,8 @@
 <?php
 require_once 'PhotoDao.php';
-require_once 'Photo.php';
-require_once 'IPhotoService.php';
-require_once 'CommentService.php';
+require_once '../../bean/Photo.php';
+require_once '../IPhotoService.php';
+require_once '../CommentService.php';
 
 
 class PhotoService implements IPhotoService

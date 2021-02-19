@@ -1,6 +1,6 @@
 <?php
 require_once 'CommentDao.php';
-require_once 'ICommentService.php';
+require_once '../ICommentService.php';
 
 class CommentService implements ICommentService
 {
