@@ -19,6 +19,7 @@ $paginate = new Pagination($page, $items_per_page, $items_total_count);
 
 $photos = $photo_service->getRange($paginate->offset(), $items_per_page);
 
+$str = '';
 if (!empty($_GET['s'])) {
     $str = htmlentities(trim(strtolower($_GET['s'])));
     $data = array_filter($allData, fn(Photo $entry): bool => str_contains(htmlentities(strtolower($entry->title)), $str));
@@ -27,6 +28,7 @@ if (!empty($_GET['s'])) {
         $_POST['m'] = $message;
     } else {
         $items_total_count = count($data);
+        $paginate = new Pagination($page, $items_per_page, $items_total_count);
         $photos = $photo_service->getRange($paginate->offset(), $items_per_page, $data);
     }
 }
@@ -81,7 +83,7 @@ if (!empty($_GET['s'])) {
 
                     if ($paginate->hasNxt()) {
 
-                        echo "<li class='next'><a href='index.php?page={$paginate->next()}'>Next</a></li>";
+                        echo "<li class='next'><a href= 'index.php?page={$paginate->next()}'", empty($str) ? '' : "&s={$str}", ">Next</a></li>";
 
 
                     }
@@ -93,12 +95,12 @@ if (!empty($_GET['s'])) {
                         if ($i == $paginate->getCurrentPage()) {
 
 
-                            echo "<li class='active'><a href='index.php?page={$i}'>{$i}</a></li>";
+                            echo "<li class='active'><a href='index.php?page={$i}'", empty($str) ? '' : "&s={$str}", ">{$i}</a></li>";
 
 
                         } else {
 
-                            echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+                            echo "<li><a href='index.php?page={$i}'", empty($str) ? '' : "&s={$str}", ">{$i}</a></li>";
 
 
                         }
@@ -108,7 +110,7 @@ if (!empty($_GET['s'])) {
 
                     if ($paginate->hasPrev()) {
 
-                        echo "<li class='previous'><a href='index.php?page={$paginate->previous()}'>Previous</a></li>";
+                        echo "<li class='previous'><a href='index.php?page={$paginate->previous()}'", empty($str) ? '' : "&s={$str}", ">Previous</a></li>";
 
 
                     }
