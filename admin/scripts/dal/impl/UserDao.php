@@ -1,8 +1,10 @@
 <?php
-require_once "pdo.php";
-require_once 'BaseDao.php';
-require_once 'IUserDao.php';
-require_once 'User.php';
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 3) . '/utils/config.php');
+
+require_once __ROOT__ . "/dal/pdo.php";
+require_once __ROOT__ . '/dal/BaseDao.php';
+require_once __ROOT__ . '/dal/IUserDao.php';
 
 class UserDao extends BaseDao implements IUserDao
 {

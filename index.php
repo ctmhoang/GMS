@@ -1,6 +1,6 @@
 <?php include("includes/header.php");
-require_once "admin/scripts/PhotoService.php";
-require_once "admin/scripts/Pagination.php";
+require_once('admin/scripts/service/impl/PhotoService.php');
+require_once "admin/scripts/utils/Pagination.php";
 
 $photo_service = $photo_service ?? null;
 

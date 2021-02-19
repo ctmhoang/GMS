@@ -1,6 +1,10 @@
 <?php
-require_once 'CommentDao.php';
-require_once '../ICommentService.php';
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 3) . '/utils/config.php');
+
+
+require_once __ROOT__ . '/dal/impl/CommentDao.php';
+require_once __ROOT__ . '/service/ICommentService.php';
 
 class CommentService implements ICommentService
 {

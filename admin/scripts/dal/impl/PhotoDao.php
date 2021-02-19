@@ -1,8 +1,10 @@
 <?php
-require_once 'admin/scripts/dal/BaseDao.php';
-require_once 'admin/scripts/dal/IPhotoDao.php';
-require_once "admin/scripts/dal/pdo.php";
-require_once 'admin/scripts/bean/Photo.php';
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 3) . '/utils/config.php');
+
+require_once __ROOT__ . '/dal/BaseDao.php';
+require_once __ROOT__ . '/dal/IPhotoDao.php';
+require_once __ROOT__ . "/dal/pdo.php";
 
 class PhotoDao extends BaseDao implements IPhotoDao
 {

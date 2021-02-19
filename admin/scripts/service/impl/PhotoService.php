@@ -1,8 +1,10 @@
 <?php
-require_once 'PhotoDao.php';
-require_once '../../bean/Photo.php';
-require_once '../IPhotoService.php';
-require_once '../CommentService.php';
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 3) . '/utils/config.php');
+
+require_once(__ROOT__ . '/dal/impl/PhotoDao.php');
+require_once __ROOT__ . '/service/IPhotoService.php';
+require_once 'CommentService.php';
 
 
 class PhotoService implements IPhotoService

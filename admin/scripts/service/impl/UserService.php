@@ -1,6 +1,10 @@
 <?php
-require_once 'UserDao.php';
-require_once 'IUserService.php';
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 3) . '/utils/config.php');
+
+
+require_once __ROOT__ . '/dal/impl/UserDao.php';
+require_once __ROOT__ . '/service/IUserService.php';
 
 class UserService implements IUserService
 {
@@ -36,7 +40,7 @@ class UserService implements IUserService
 
     public function save(array $data, int $id = -1): int
     {
-        return $id == -1 ? $this->udao->insert($data) : $this->udao->update($id,$data);
+        return $id == -1 ? $this->udao->insert($data) : $this->udao->update($id, $data);
     }
 
     public function del(User $user): bool

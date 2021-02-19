@@ -1,8 +1,6 @@
 <?php include("includes/header.php");
-require_once('admin/scripts/Photo.php');
-require_once('admin/scripts/PhotoService.php');
-require_once('admin/scripts/Comment.php');
-require_once('admin/scripts/CommentService.php');
+require_once('admin/scripts/service/impl/PhotoService.php');
+require_once('admin/scripts/service/impl/CommentService.php');
 
 
 if (empty($_GET['id']))

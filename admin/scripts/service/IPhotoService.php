@@ -1,4 +1,8 @@
 <?php
+/** @define "__ROOT__" "/opt/lampp/htdocs/GMS/admin/scripts" */
+require_once(dirname(__FILE__, 2) . '/utils/config.php');
+
+require_once __ROOT__ . '/bean/Photo.php';
 
 interface IPhotoService
 {
