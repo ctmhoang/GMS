@@ -74,8 +74,9 @@ class PhotoService implements IPhotoService
         return false;
     }
 
-    public function getRange(int $offset, int $perPage): array
+    public function getRange(int $offset, int $perPage, array $data = []): array
     {
+        if (!empty($data)) return array_slice($data, $offset, $perPage);
         return array_map(fn(array $entry): Photo => new Photo($entry), $this->pdao->getRange($offset, $perPage));
     }
 }

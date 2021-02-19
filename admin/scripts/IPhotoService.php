@@ -8,5 +8,5 @@ interface IPhotoService{
 
     public function del(Photo $photo) : bool;
 
-    public function getRange(int $offset, int $perPage) : array;
+    public function getRange(int $offset, int $perPage, array $data=[]) : array;
 }

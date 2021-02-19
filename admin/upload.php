@@ -68,13 +68,13 @@ if (isset($_FILES['file'])) {
 
                                 <div class="form-group">
 
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" class="form-control" required pattern="[a-zA-Z0-9]+" minlength="3">
 
                                 </div>
 
                                 <div class="form-group">
 
-                                    <input type="file" name="file">
+                                    <input type="file" name="file" required>
 
                                 </div>
 
