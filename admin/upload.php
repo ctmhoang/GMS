@@ -1,9 +1,10 @@
 <?php
 include("includes/header.php");
-require_once('scripts/Photo.php');
-require_once('scripts/PhotoService.php');
+require_once('scripts/bean/Photo.php');
+require_once('scripts/service/impl/PhotoService.php');
 
 $photo_service = $photo_service ?? null;
+$session = $session ?? null;
 
 $message = $session->getMessage();
 if (!$session->isSignedIn()) {
@@ -66,7 +67,7 @@ if (isset($_FILES['file'])) {
 
                                 <div class="form-group">
 
-                                    <input type="text" name="title" class="form-control" required pattern="[a-zA-Z0-9]+" minlength="3">
+                                    <input type="text" name="title" class="form-control" required minlength="3">
 
                                 </div>
 

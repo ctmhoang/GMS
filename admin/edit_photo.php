@@ -1,8 +1,9 @@
-<?php /** @noinspection PhpIncludeInspection */
+<?php
 include("includes/header.php");
-require_once('scripts/Photo.php');
-require_once('scripts/PhotoService.php');
+require_once('scripts/bean/Photo.php');
+require_once('scripts/service/impl/PhotoService.php');
 
+$session = $session ?? null;
 $photo_service = $photo_service ?? null;
 
 if (!$session->isSignedIn()) {

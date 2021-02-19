@@ -1,6 +1,6 @@
 <?php
-/** @noinspection PhpIncludeInspection */
-require_once 'includes/Session.php';
+
+require_once 'scripts/utils/Session.php';
 
 $session = $session ?? null;
 $session->logout();

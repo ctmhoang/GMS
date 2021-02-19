@@ -1,5 +1,5 @@
 <?php
-/** @noinspection PhpIncludeInspection */
+
 include("includes/header.php");
 
 require_once('scripts/service/impl/PhotoService.php');
@@ -9,6 +9,8 @@ require_once 'scripts/service/impl/UserService.php';
 $photo_service = $photo_service ?? null;
 $comment_service = $comment_service ?? null;
 $user_service = $user_service ?? null;
+
+$session = $session ?? null;
 
 if (!$session->isSignedIn()) {
     header('Location: login.php');

@@ -18,19 +18,7 @@ if (isset($_POST['submit'])) {
 
     $new_comment = new Comment(['pid' => $_GET['id'], 'author' => $author, 'body' => $body]);
 
-    if ($comment_service->insert($new_comment)) {
-
-        header("Location: photo.php?id=$photo->id");
-
-
-    } else {
-
-
-        $message = "There was some problems in saving";
-
-
-    }
-
+    $comment_service->insert($new_comment);
 
 } else {
 
@@ -55,7 +43,7 @@ $comments = $comment_service->fetchAllByPid($_GET['id']);
 
         <!-- Author -->
         <p class="lead">
-            by <a href="#"><?=empty($name =$photo->author) ? 'Anonymous' : $name?></a>
+            by <a href="#"><?= empty($name = $photo->author) ? 'Anonymous' : $name ?></a>
         </p>
 
         <hr>

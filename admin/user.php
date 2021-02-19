@@ -1,7 +1,8 @@
-<?php /** @noinspection PhpIncludeInspection */
+<?php
 require_once 'includes/header.php';
-require_once 'scripts/UserService.php';
+require_once 'scripts/service/impl/UserService.php';
 
+$session = $session ?? null;
 $user_service = $user_service ?? null;
 
 if (!$session->isSignedIn()) header("Location: login.php");
